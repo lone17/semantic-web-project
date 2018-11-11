@@ -11,8 +11,12 @@ if site == 'zing':
 elif site == 'nct':
     files = ['nct/songs_' + str(i) + '.txt' for i in range(15)]
 
-with open(site + '_songs.kb', 'rb') as f:
-    kb = pickle.load(f)
+kb_file = site + '_songs.kb'
+if os.path.exists(kb_file):
+    with open(kb_file, 'rb') as f:
+        kb = pickle.load(f)
+else:
+    kb = {}
 
 if os.path.exists('error.pickle'):
     with open('error.pickle', 'rb') as f:
@@ -53,7 +57,7 @@ for file in files:
         except Exception as e:
             error[url] = e.__traceback__
 
-with open(site + '_songs.kb', 'wb') as f:
+with open(kb_file, 'wb') as f:
     pickle.dump(kb, f)
 
 with open('error.pickle', 'wb') as f:
