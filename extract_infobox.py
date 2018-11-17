@@ -14,38 +14,38 @@ entities_lower = [s.lower() for s in entities]
 info = {}
 error = []
 with open('infoboxalldump', 'r', encoding='utf8') as f:
-    html = ''
-    cur = None
+    cur_html = ''
+    cur_url = None
     for line in f:
-        line = line.strip()
         if line.startswith('https://vi.wikipedia.org/wiki/'):
-            if cur:
-                flag = False
-                if len(notion) > 0:
+            line = line.strip()
+            flag = True
+            if cur_url:
+                if len(cur_notion) > 0:
+                    flag = False
                     for s in notions:
-                        if notion[0] in s:
+                        if s in cur_notion[0]:
                             flag = True
                             break
-                    if not flag:
-                        continue
-                try:
-                    idx = entities_lower.index(subject)
-                except ValueError:
-                    continue
-                tmp = {'name': entities[idx], 'infobox': html}
-                if cur in info:
-                    tmp['url'] = line
-                    error.append(tmp)
-                else:
-                    info[line] = tmp
-                    print(line)
-                    cur = line
-                    html = ''
+                if flag:
+                    try:
+                        idx = entities_lower.index(cur_subject)
+                        tmp = {'name': entities[idx], 'infobox': cur_html}
+                        if cur_url in info:
+                            tmp['url'] = cur_url
+                            error.append(tmp)
+                        else:
+                            info[cur_url] = tmp
+                            print(cur_url)
+                    except ValueError:
+                        pass
+            cur_url = line
+            cur_html = ''
             line = line.replace('https://vi.wikipedia.org/wiki/', '').replace('_', ' ').lower()
-            subject = re.sub('\([^)]*\)', '', line).strip()
-            notion = re.findall('(?<=\().*(?=\))', line)
+            cur_subject = re.sub('\([^)]*\)', '', line).strip()
+            cur_notion = re.findall('(?<=\().*(?=\))', line)
         else:
-            html += line
+            cur_html += line
 
 with open('wiki.kb', 'wb') as f:
     pickle.dump(info, f)
