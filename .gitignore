@@ -1,6 +1,7 @@
 chieu-cao.net/
 nct/
 zing/
+backup/
 *.txt
 *.csv
 *.rar
@@ -8,3 +9,7 @@ zing/
 *.pyc
 *.npy
 *.html
+*.pem
+history
+*.pickle
+*dump
