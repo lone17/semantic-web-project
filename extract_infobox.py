@@ -1,6 +1,9 @@
 from utils import *
+import pickle
 
-print('running ...')
+notions = ['ca sĩ', 'ca sỹ', 'nghệ sĩ', 'nghệ sỹ', 'nhạc sĩ', 'nhạc sỹ', 'tỉnh',
+           'thành phố', 'nhóm nhạc', 'band', 'ban nhạc']
+
 with open('artist_name.txt', 'r', encoding='utf8') as f:
     names = f.read().split('\n')
 
@@ -14,16 +17,21 @@ with open('infoboxalldump', 'r', encoding='utf8') as f:
     html = ''
     cur = None
     for line in f:
+        line = line.strip()
         if line.startswith('https://vi.wikipedia.org/wiki/'):
-            subject = line.replace('https://vi.wikipedia.org/wiki/', '').replace('_', ' ')
-            subject = re.sub('\([^)]*\)', '', subject).strip().lower()
-            try:
-                idx = entities_lower.index(subject)
-            except ValueError:
-                continue
             if cur:
-                # soup = BeautifulSoup(html, features='lxml')
-                # name = soup.select(css_selector)[0].text
+                flag = False
+                if len(notion) > 0:
+                    for s in notions:
+                        if notion[0] in s:
+                            flag = True
+                            break
+                    if not flag:
+                        continue
+                try:
+                    idx = entities_lower.index(subject)
+                except ValueError:
+                    continue
                 tmp = {'name': entities[idx], 'infobox': html}
                 if cur in info:
                     tmp['url'] = line
@@ -31,8 +39,11 @@ with open('infoboxalldump', 'r', encoding='utf8') as f:
                 else:
                     info[line] = tmp
                     print(line)
-            cur = line
-            html = ''
+                    cur = line
+                    html = ''
+            line = line.replace('https://vi.wikipedia.org/wiki/', '').replace('_', ' ').lower()
+            subject = re.sub('\([^)]*\)', '', line).strip()
+            notion = re.findall('(?<=\().*(?=\))', line)
         else:
             html += line
 
