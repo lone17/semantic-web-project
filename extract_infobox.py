@@ -1,5 +1,7 @@
 from utils import *
 import pickle
+import requests
+from bs4 import BeautifulSoup
 
 notions = ['ca sĩ', 'ca sỹ', 'nghệ sĩ', 'nghệ sỹ', 'nhạc sĩ', 'nhạc sỹ', 'tỉnh',
            'thành phố', 'nhóm nhạc', 'band', 'ban nhạc']
@@ -9,6 +11,15 @@ with open('artist_name.txt', 'r', encoding='utf8') as f:
 
 entities = [s for s in names + cities]
 entities_lower = [s.lower() for s in entities]
+
+def get_infobox(url):
+    css_selector = '#mw-content-text > div > table.infobox'
+    html = requests.get(url).text
+
+    soup = BeautifulSoup(html, features='lxml')
+    infobox = soup.select(css)[0]
+
+    return infobox
 
 # css_selector = 'tbody > tr:nth-of-type(1) > th'
 info = {}

@@ -29,7 +29,7 @@ convert_genres = {'nhạc trẻ': 'pop', 'nhạc không lời': 'instrumental',
 instruments = ['cello', 'violin', 'piano', 'guitar', 'saxophone', 'banjo',
                'clarinet', ' cornet', 'drum', 'flute', 'organ', 'trombone',
                'xylophone', 'harmonica', 'kèn bầu', 'đàn bầu', 'đàn nguyệt',
-                'đàn tranh', 'ukulele', 'keyboard', 'contrabass']
+                'đàn tranh', 'ukulele', 'keyboard', 'contrabass', 'accordeon']
 
 other_instruments = ['nhạc cụ dân tộc', 'đàn gáo', 'đàn tam thập lục', 'đàn tỳ bà',
                      ]
@@ -42,28 +42,30 @@ convert_instruments = {'vi ô lông': 'violin', 'vi-ô-lông': 'violin',
                        'học trống': 'drum', 'chơi trống': 'drum',
                        'tay trống': 'drum', 'và trống': 'drum',
                        'một bass': 'guitar', 'chơi bass': 'guitar',
-                       'tay bass': 'guitar', 'và bass': 'guitar'}
+                       'tay bass': 'guitar', 'và bass': 'guitar',
+                       'accordéon': 'accordeon', 'phong cầm': 'accordeon'}
 
-cities = ['An Giang', 'Biên Hòa', 'Buôn Ma Thuột', 'BuônMa Thuột', 'Bà Rịa',
-          'Bà Rịa - Vũng Tàu', 'Bình Dương', 'Bình Phước', 'Bình Thuận',
-          'Bình Định', 'Bạc Liêu', 'Bảo Lộc', 'Bắc Giang', 'Bắc Kạn', 'Bắc Ninh',
-          'Bến Tre', 'Cam Ranh', 'Cao Bằng', 'Cao Lãnh', 'Châu Đốc', 'Cà Mau',
-          'Cần Thơ', 'Cẩm Phả', 'Gia Lai', 'Huế', 'Hà Giang', 'Hà Nam', 'Hà Nội',
-          'Hà Tiên', 'Hà Tĩnh', 'Hòa Bình', 'Hưng Yên', 'Hạ Long', 'Hải Dương',
-          'Hải Phòng', 'Hậu Giang', 'Hội An', 'Khánh Hoà', 'Khánh Hòa',
-          'Kiên Giang', 'Kon Tum', 'Lai Châu', 'Long An', 'Long Xuyên', 'Lào Cai',
-          'Lâm Đồng', 'Lạng Sơn', 'Móng Cái', 'Mỹ Tho', 'Nam Định', 'Nghệ An',
-          'Nha Trang', 'Ninh Bình', 'Ninh Thuận', 'Phan Rang - Tháp Chàm',
-          'Phan Thiết', 'Phú Thọ', 'Phú Yên', 'Phúc Yên', 'Phủ Lý', 'Pleiku',
-          'Quy Nhơn', 'Quảng Bình', 'Quảng Nam', 'Quảng Ngãi', 'Quảng Ninh',
-          'Quảng Trị', 'Rạch Giá', 'Sa Đéc', 'Sóc Trăng', 'Sông Công', 'Sơn La',
-          'Sầm Sơn', 'Tam Kỳ', 'Tam Điệp', 'Thanh Hóa', 'Thành Phố Hồ Chí Minh',
+cities = ['An Giang', 'Biên Hòa', 'Buôn Ma Thuột', 'Bà Rịa', 'Bà Rịa - Vũng Tàu',
+          'Bình Dương', 'Bình Phước', 'Bình Thuận', 'Bình Định', 'Bạc Liêu',
+          'Bảo Lộc', 'Bắc Giang', 'Bắc Kạn', 'Bắc Ninh', 'Bến Tre', 'Cam Ranh',
+          'Cao Bằng', 'Cao Lãnh', 'Châu Đốc', 'Cà Mau', 'Cần Thơ', 'Cẩm Phả',
+          'Gia Lai', 'Huế', 'Hà Giang', 'Hà Nam', 'Hà Nội', 'Hà Tiên', 'Hà Tĩnh',
+          'Hòa Bình', 'Hưng Yên', 'Hạ Long', 'Hải Dương', 'Hải Phòng', 'Hậu Giang',
+          'Hội An', 'Khánh Hòa', 'Kiên Giang', 'Kon Tum', 'Lai Châu', 'Long An',
+          'Long Xuyên', 'Lào Cai', 'Lâm Đồng', 'Lạng Sơn', 'Móng Cái', 'Mỹ Tho',
+          'Nam Định', 'Nghệ An', 'Nha Trang', 'Ninh Bình', 'Ninh Thuận',
+          'Phan Rang - Tháp Chàm', 'Phan Thiết', 'Phú Thọ', 'Phú Yên', 'Phúc Yên',
+          'Phủ Lý', 'Pleiku', 'Quy Nhơn', 'Quảng Bình', 'Quảng Nam', 'Quảng Ngãi',
+          'Quảng Ninh', 'Quảng Trị', 'Rạch Giá', 'Sa Đéc', 'Sóc Trăng', 'Sông Công',
+          'Sơn La', 'Sầm Sơn', 'Tam Kỳ', 'Tam Điệp', 'Thanh Hóa',
+          'Hồ Chí Minh', 'HCM', 'thành phố mang tên Bác', 'Sài Gòn',
           'Thái Bình', 'Thái Nguyên', 'Thủ Dầu Một', 'Thừa Thiên - Huế',
           'Tiền Giang', 'Trà Vinh', 'Tuy Hòa', 'Tuyên Quang', 'Tân An',
           'Tây Ninh', 'Uông Bí', 'Vinh', 'Việt Trì', 'Vĩnh Long', 'Vĩnh Phúc',
           'Vĩnh Yên', 'Vũng Tàu', 'Vị Thanh', 'Yên Bái', 'Điện Biên', 'Đà Lạt',
           'Đà Nẵng', 'Đông Hà', 'Đắk Lắk', 'Đắk Nông', 'Đồng Hới', 'Đồng Nai',
           'Đồng Tháp', 'Đồng Xoài']
+cities = [c.lower() for c in cities]
 genres += other_genres
 instruments += other_instruments
 
@@ -190,6 +192,27 @@ def extract_biography(html, site):
 
     return text
 
+def extract_img(html, site):
+
+    soup = BeautifulSoup(html, features='lxml')
+
+    if site == 'zing':
+        css_selector = 'body > div > div > div > div > div > div > img'
+        default_img = 'https://photo-zmp3.zadn.vn/default.jpg'
+    elif site == 'nct':
+        css_selector = 'body > div.singer-top-cover > div.wrap > div > div.singer-left-avatar > div > img'
+        default_img = None
+
+    try:
+        img = soup.select(css_selector)[0].get('src')
+    except Exception as e:
+        raise e
+
+    if img == default_img:
+        img = None
+
+    return img
+
 def extract_professions(text):
     text = text.lower()
     ret = []
@@ -271,8 +294,125 @@ def extract_composers(html, site):
 
     return ret
 
-urls = ['https://mp3.zing.vn/nghe-si/Son-Tung-M-TP/tieu-su',
-        'https://www.nhaccuatui.com/nghe-si-son-tung-mtp.html']
+def get_all_contexts(text, pattern, span):
+    lower_text = text.lower()
+    matches = re.findall(pattern, lower_text)
+
+    contexts = []
+    for match in matches:
+        start, end = match.span()
+        left = text[:start]
+        right = text[end:]
+        indicator = text[start:end]
+        if span[0] == 0:
+            context = [indicator] + right.split()[:span[1]]
+        else:
+            context = left.split()[-span[0]:] + [indicator] + right.split()[:span[1]]
+        contexts.append(' '.join(context))
+
+    return contexts
+
+def get_first_context(text, indicators, span):
+    lower_text = text.lower()
+    pattern = '|'.join(indicators)
+    first = re.search(pattern, lower_text)
+
+    if first is None:
+        return ''
+
+    start, end = first.span()
+    left = text[:start]
+    right = text[end:]
+    indicator = text[start:end]
+    if span[0] == 0:
+        context = [indicator] + right.split()[:span[1]]
+    else:
+        context = left.split()[-span[0]:] + [indicator] + right.split()[:span[1]]
+
+    return ' '.join(context)
+
+def get_first_context_in_sentence(text, indicators, span):
+    text = text.lower()
+    pattern = '|'.join(indicators)
+    context = ''
+    for sentence in text.split('.'):
+        indicator = re.search(pattern, sentence)
+        if indicator:
+            indicator = indicator.group(0)
+            context = sentence
+            break
+
+    if context == '':
+        return '', ''
+
+    left, right = context.split(indicator, 1)
+    if span[0] == 0:
+        # context = [indicator] + right.split()[:span[1]]
+        return '', ' '.join(right.split()[:span[1]])
+    else:
+        # context = left.split()[-span[0]:] + [indicator] + right.split()[:span[1]]
+        return ' '.join(left.split()[-span[0]:]), ' '.join(right.split()[:span[1]])
+
+    # return ' '.join(context)
+
+def extract_first_named_entity(context):
+    tags = pos_tag(context)
+    entity = []
+    for i in range(len(tags)):
+        if tags[i][1] == 'Np':
+            entity.append(tags[i][0])
+            for j in range(i+1, len(tags)):
+                if tags[j][1] != 'Np':
+                    break
+                entity.append(tags[j][0])
+            return ' '.join(entity)
+
+def extract_height(text):
+    context = text
+
+    pattern = '1\s{0,2}m\s{0,2}\d{1,2}|1\d\d\s{0,2}cm|1[\.,]\d{1,2}\s{0,2}m|1\d\d[,\.]\d?\s{0,2}cm'
+    height = re.findall(pattern, context)
+    height = [int(re.sub('\s|m|,|\.|c', '', s)) for s in height]
+    height = [h if h >= 100 else h*10 for h in height]
+    height = [h if h < 1000 else h/10 for h in height]
+
+    return height
+
+def extract_first_city(context):
+    if not context:
+        return None
+
+    first_city = None
+    first_index = 99999
+    for c in cities:
+        idx = context.find(c)
+        if idx != -1 and idx < first_index:
+            first_index = idx
+            first_city = c
+
+    return first_city
+
+def extract_city(text):
+    indicators = ['sinh tại', 'sinh ra', 'sinh vào', 'sinh năm', 'quê', 'đến từ',
+                  'lớn lên', 'xuất thân', 'nguyên quán']
+
+    left, right = get_first_context_in_sentence(text, indicators, (20, 20))
+
+    first_city = extract_first_city(right)
+    if not first_city:
+        first_city = extract_first_city(left)
+    # if not first_city:
+    #     first_city = extract_first_city(text)
+
+    if first_city in ['hồ chí minh', 'hcm', 'thành phố mang tên bác', 'sài gòn']:
+        return 'Thành phố Hồ Chí Minh'
+
+    if first_city:
+        return first_city.title()
+    else:
+        return None
+
+urls = []
 test_time = ['https://mp3.zing.vn/nghe-si/10cm/tieu-su',
              'https://mp3.zing.vn/nghe-si/Andamiro/tieu-su',
              'https://mp3.zing.vn/nghe-si/Baek-Chung-Kang/tieu-su',
@@ -295,7 +435,21 @@ test_time = ['https://mp3.zing.vn/nghe-si/10cm/tieu-su',
              'https://www.nhaccuatui.com/nghe-si-kwill.html',
              'https://www.nhaccuatui.com/nghe-si-lee-soo-young.html',
              'https://www.nhaccuatui.com/nghe-si-matt-cardle.html']
-urls += test_time
+test_img = ['https://mp3.zing.vn/nghe-si/Nhom-1080/tieu_su',
+            'https://mp3.zing.vn/nghe-si/Eden/tieu-su']
+test_city = ['https://mp3.zing.vn/nghe-si/Son-Tung-M-TP/tieu-su',
+             'https://www.nhaccuatui.com/nghe-si-son-tung-mtp.html',
+             'https://mp3.zing.vn/nghe-si/Soobin-Hoang-Son/tieu-su',
+             'https://www.nhaccuatui.com/nghe-si-soobin-hoang-son.html',
+             'https://mp3.zing.vn/nghe-si/Thuy-Chi/tieu-su',
+             'https://www.nhaccuatui.com/nghe-si-thuy-chi.html',
+             'https://mp3.zing.vn/nghe-si/Noo-Phuoc-Thinh/tieu-su',
+             'https://www.nhaccuatui.com/nghe-si-noo-phuoc-thinh.html',
+             'https://mp3.zing.vn/nghe-si/Dong-Nhi/tieu-su',
+             'https://www.nhaccuatui.com/nghe-si-dong-nhi.html',
+             'https://mp3.zing.vn/nghe-si/Phan-Manh-Quynh/tieu-su',
+             'https://www.nhaccuatui.com/nghe-si-phan-manh-quynh.html',]
+urls += test_city
 def test_artist(url):
     if 'https://mp3.zing.vn' in url:
         site = 'zing'
@@ -306,12 +460,14 @@ def test_artist(url):
     html = req.text
     print('\n##############\n')
     print(url)
-    # text = extract_biography(html, site)
-    # print(extract_name(html, site))
+    text = extract_biography(html, site)
+    print(extract_artist_name(html, site))
     # print(extract_professions(text))
     # print(extract_instruments(text))
-    info = extract_artist_info(html, site)
-    print(info)
+    # info = extract_artist_info(html, site)
+    # print(info)
+    # print(extract_img(html, site))
+    print(extract_city(text))
 
 # for url in urls:
 #     test_artist(url)
@@ -335,13 +491,13 @@ def test_song(url):
     print('----- Lyric -----')
     print(extract_lyric(html, site))
 
-urls = ['https://mp3.zing.vn/bai-hat/Never-Not-Lauv/ZW9C6EWD.html',
-        'https://mp3.zing.vn/bai-hat/Noi-Nay-Co-Anh-Son-Tung-M-TP/ZW79ZBE8.html',
-        'https://mp3.zing.vn/bai-hat/Thang-Dien-JustaTee-Phuong-Ly/ZW9DFW9A.html',
-        'https://www.nhaccuatui.com/bai-hat/em-khong-the-tien-tien-ft-touliver.8gSTnzCeZxUF.html',
-        'https://www.nhaccuatui.com/bai-hat/runnin-low-blackbear.o5Vyidiyu5XQ.html',
-        'https://www.nhaccuatui.com/bai-hat/i-hate-u-i-love-u-gnash-ft-olivia-obrien.8BPviDWw6QX6.html',
-        'https://www.nhaccuatui.com/bai-hat/buon-cua-anh-k-icm-ft-dat-g-ft-masew.mlMk7cvOOa5b.html']
+# urls = ['https://mp3.zing.vn/bai-hat/Never-Not-Lauv/ZW9C6EWD.html',
+#         'https://mp3.zing.vn/bai-hat/Noi-Nay-Co-Anh-Son-Tung-M-TP/ZW79ZBE8.html',
+#         'https://mp3.zing.vn/bai-hat/Thang-Dien-JustaTee-Phuong-Ly/ZW9DFW9A.html',
+#         'https://www.nhaccuatui.com/bai-hat/em-khong-the-tien-tien-ft-touliver.8gSTnzCeZxUF.html',
+#         'https://www.nhaccuatui.com/bai-hat/runnin-low-blackbear.o5Vyidiyu5XQ.html',
+#         'https://www.nhaccuatui.com/bai-hat/i-hate-u-i-love-u-gnash-ft-olivia-obrien.8BPviDWw6QX6.html',
+#         'https://www.nhaccuatui.com/bai-hat/buon-cua-anh-k-icm-ft-dat-g-ft-masew.mlMk7cvOOa5b.html']
 
 # for url in urls:
 #     test_song(url)
