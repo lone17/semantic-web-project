@@ -4,7 +4,7 @@ import traceback
 
 sep = '##### NEW FILE #####\n'
 error = []
-site = 'nct'
+site = 'zing'
 
 if site == 'zing':
     files = ['zing/tieu_su_' + str(i) + '.txt' for i in range(3)]
@@ -64,7 +64,9 @@ for file in files:
             # kb[url]['img'] = img
 
             city = extract_city(text)
+            height = extract_height(text)
             kb[url]['city'] = city
+            kb[url]['height'] = height
 
             print('*' * 80)
             print('url:', url)

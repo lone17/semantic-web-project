@@ -65,6 +65,10 @@ cities = ['An Giang', 'Biên Hòa', 'Buôn Ma Thuột', 'Bà Rịa', 'Bà Rịa 
           'Vĩnh Yên', 'Vũng Tàu', 'Vị Thanh', 'Yên Bái', 'Điện Biên', 'Đà Lạt',
           'Đà Nẵng', 'Đông Hà', 'Đắk Lắk', 'Đắk Nông', 'Đồng Hới', 'Đồng Nai',
           'Đồng Tháp', 'Đồng Xoài']
+
+bands = ['R.E.D', 'HKT', 'ATM', 'B.O.M', 'Nhóm Hot Steps', 'Piano Band', 'SMS',
+         'Team A', 'TVM', 'Vboys', 'Ban Nhạc Trúc Xanh', 'Ban Nhạc Hương Sen',
+         'Nhóm Nhạc ...', 'Ban Nhạc Anh Em', ]
 cities = [c.lower() for c in cities]
 genres += other_genres
 instruments += other_instruments
@@ -393,16 +397,26 @@ def extract_first_city(context):
     return first_city
 
 def extract_city(text):
-    indicators = ['sinh tại', 'sinh ra', 'sinh vào', 'sinh năm', 'quê', 'đến từ',
-                  'lớn lên', 'xuất thân', 'nguyên quán']
-
+    indicators = ['sinh tại', 'sinh ra', 'quê', 'đến từ', 'lớn lên', 'xuất thân',
+                  'nguyên quán']
     left, right = get_first_context_in_sentence(text, indicators, (20, 20))
-
     first_city = extract_first_city(right)
     if not first_city:
         first_city = extract_first_city(left)
-    # if not first_city:
-    #     first_city = extract_first_city(text)
+
+    if not first_city:
+        indicators = ['sinh vào', 'sinh năm', 'sinh ngày', 'sống ở']
+        left, right = get_first_context_in_sentence(text, indicators, (0, 30))
+        first_city = extract_first_city(right)
+        if not first_city:
+            first_city = extract_first_city(left)
+
+    if not first_city:
+        indicators = ['gia đình', 'cha mẹ', 'bố mẹ']
+        left, right = get_first_context_in_sentence(text, indicators, (0, 20))
+        first_city = extract_first_city(right)
+        if not first_city:
+            first_city = extract_first_city(left)
 
     if first_city in ['hồ chí minh', 'hcm', 'thành phố mang tên bác', 'sài gòn']:
         return 'Thành phố Hồ Chí Minh'
@@ -468,6 +482,7 @@ def test_artist(url):
     # print(info)
     # print(extract_img(html, site))
     print(extract_city(text))
+    # print(extract_height(text))
 
 # for url in urls:
 #     test_artist(url)
