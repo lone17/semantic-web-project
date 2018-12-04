@@ -27,12 +27,11 @@ for file in files:
         if url not in kb or error_404 in html:
             continue
 
-        if 'city' in kb[url]:
+        if kb[url]['country']:
             continue
 
-        if kb[url]['country'] != 'Việt Nam':
-            kb[url]['city'] = None
-            continue
+        # if kb[url]['country'] != 'Việt Nam':
+        #     continue
 
         try:
             name = kb[url]['name']
@@ -63,10 +62,10 @@ for file in files:
             # img = extract_img(html, site)
             # kb[url]['img'] = img
 
-            city = extract_city(text)
-            height = extract_height(text)
-            kb[url]['city'] = city
-            kb[url]['height'] = height
+            # city = extract_city(text)
+            # height = extract_height(text)
+            # kb[url]['city'] = city
+            # kb[url]['height'] = height
 
             print('*' * 80)
             print('url:', url)
@@ -74,13 +73,10 @@ for file in files:
             # print('professions:', professions)
             # print('instruments:', instruments)
             # print(kb[url]['img'])
-            print(kb[url]['city'])
-            print()
+            # print(kb[url]['city'])
+            # print()
         except:
             error.append(url)
-
-for k in kb.keys():
-    kb[k]['genres'] = kb[k].pop('professions')
 
 if site == 'zing':
     urls = ['https://mp3.zing.vn/nghe-si/Son-Tung-M-TP/tieu-su',
@@ -96,7 +92,26 @@ elif site == 'nct':
             'https://www.nhaccuatui.com/nghe-si-phan-manh-quynh.html',
             'https://www.nhaccuatui.com/nghe-si-thuy-chi.html',
             'https://www.nhaccuatui.com/nghe-si-noo-phuoc-thinh.html']
-
+urls = ['https://mp3.zing.vn/nghe-si/Anh-Linh/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Ngoc-Anh/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Truong-Tam/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Duc-Truong/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Thanh-Hung-TDSC/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Thuy-Huong/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Chi-Dung/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Thien-Kieu/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Chau-Giang/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Bich-Huong/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Nguyen-Phuong-Uyen-Tru-Tinh/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Giang-Tam-Tru-Tinh/tieu-su',
+        'https://mp3.zing.vn/nghe-si/VRT/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Zero9/tieu-su',
+        'https://mp3.zing.vn/nghe-si/DJ-Minh-Tri/tieu-su',
+        'https://mp3.zing.vn/nghe-si/My-Van/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Machiot/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Dinh-Long/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Thai-Anthony/tieu-su',
+        'https://mp3.zing.vn/nghe-si/Murda-Beatz/tieu-su']
 for url in urls:
     print(kb[url])
 

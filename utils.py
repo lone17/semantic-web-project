@@ -68,7 +68,9 @@ cities = ['An Giang', 'Biên Hòa', 'Buôn Ma Thuột', 'Bà Rịa', 'Bà Rịa 
 
 bands = ['R.E.D', 'HKT', 'ATM', 'B.O.M', 'Nhóm Hot Steps', 'Piano Band', 'SMS',
          'Team A', 'TVM', 'Vboys', 'Ban Nhạc Trúc Xanh', 'Ban Nhạc Hương Sen',
-         'Nhóm Nhạc ...', 'Ban Nhạc Anh Em', ]
+         'Nhóm Nhạc ...', 'Ban Nhạc Anh Em', 'Zero9', 'Nobb', 'P.M Band',
+         'C.V Band']
+
 cities = [c.lower() for c in cities]
 genres += other_genres
 instruments += other_instruments
@@ -131,6 +133,16 @@ def extract_artist_info(html, site):
                             text = text[span.end():].strip()
                             if text != '':
                                 country = text
+                            elif 'trung quốc' in text_lower or 'hoa ngữ' in text_lower or 'china' in text_lower:
+                                kb[url]['country'] = 'China'
+                            elif 'nhật bản' in text_lower or 'japan' in text_lower:
+                                kb[url]['country'] = 'Japan'
+                            elif 'hàn quốc' in text_lower or ' korea' in text_lower:
+                                kb[url]['country'] = 'South Korea'
+                            elif 'việt' in lower_text:
+                                country = 'Việt Nam'
+                            elif 'âu mỹ' in text_lower:
+                                kb[url]['country'] = 'Unknown'
             if birth_name or dob or country:
                 break
     elif site == 'nct':
@@ -172,6 +184,16 @@ def extract_artist_info(html, site):
                         text = text[span.end():].strip()
                         if text != '':
                             country = text
+                        elif 'trung quốc' in text_lower or 'hoa ngữ' in text_lower or 'china' in text_lower:
+                            kb[url]['country'] = 'China'
+                        elif 'nhật bản' in text_lower or 'japan' in text_lower:
+                            kb[url]['country'] = 'Japan'
+                        elif 'hàn quốc' in text_lower or ' korea' in text_lower:
+                            kb[url]['country'] = 'South Korea'
+                        elif 'việt' in lower_text:
+                            country = 'Việt Nam'
+                        elif 'âu mỹ' in text_lower:
+                            kb[url]['country'] = 'Unknown'
 
     return {'birth_name': birth_name, 'dob': dob, 'country': country}
 
