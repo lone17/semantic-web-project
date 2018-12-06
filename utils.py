@@ -66,11 +66,6 @@ cities = ['An Giang', 'Biên Hòa', 'Buôn Ma Thuột', 'Bà Rịa', 'Bà Rịa 
           'Đà Nẵng', 'Đông Hà', 'Đắk Lắk', 'Đắk Nông', 'Đồng Hới', 'Đồng Nai',
           'Đồng Tháp', 'Đồng Xoài']
 
-bands = ['R.E.D', 'HKT', 'ATM', 'B.O.M', 'Nhóm Hot Steps', 'Piano Band', 'SMS',
-         'Team A', 'TVM', 'Vboys', 'Ban Nhạc Trúc Xanh', 'Ban Nhạc Hương Sen',
-         'Nhóm Nhạc ...', 'Ban Nhạc Anh Em', 'Zero9', 'Nobb', 'P.M Band',
-         'C.V Band']
-
 cities = [c.lower() for c in cities]
 genres += other_genres
 instruments += other_instruments
