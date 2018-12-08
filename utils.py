@@ -29,7 +29,7 @@ convert_genres = {'nhạc trẻ': 'pop', 'nhạc không lời': 'instrumental',
 instruments = ['cello', 'violin', 'piano', 'guitar', 'saxophone', 'banjo',
                'clarinet', ' cornet', 'drum', 'flute', 'organ', 'trombone',
                'xylophone', 'harmonica', 'kèn bầu', 'đàn bầu', 'đàn nguyệt',
-                'đàn tranh', 'ukulele', 'keyboard', 'contrabass', 'accordeon']
+               'đàn tranh', 'ukulele', 'keyboard', 'contrabass', 'accordeon']
 
 other_instruments = ['nhạc cụ dân tộc', 'đàn gáo', 'đàn tam thập lục', 'đàn tỳ bà',
                      ]
@@ -81,6 +81,33 @@ def extract_artist_name(html, site):
     name = soup.select(css_selector)[0].text
 
     return name
+
+
+def standardize_date(date):
+
+    if not date:
+        return 'yyyy/mm/dd'
+
+    test1 = parse(date, dayfirst=True, default=datetime.datetime(4,4,4))
+    test2 = parse(date, dayfirst=True, default=datetime.datetime(8,8,8))
+
+    dob = []
+    tmp = test1.strftime('%d%m%Y')
+
+    if test1.year == test2.year:
+        dob.append(tmp[4:])
+    else:
+        dob.append('yyyy')
+    if test1.month == test2.month:
+        dob.append(tmp[2:4])
+    else:
+        dob.append('mm')
+    if test1.day == test2.day:
+        dob.append(tmp[:2])
+    else:
+        dob.append('dd')
+
+    return '/'.join(dob)
 
 def extract_artist_info(html, site):
     soup = BeautifulSoup(html, features='lxml')
