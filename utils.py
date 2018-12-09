@@ -1,5 +1,6 @@
 import requests
 import datetime
+import pickle
 import re
 from dateutil.parser import parse
 from bs4 import BeautifulSoup
@@ -88,7 +89,7 @@ def standardize_date(date):
     if not date:
         return 'yyyy/mm/dd'
 
-    test1 = parse(date, dayfirst=True, default=datetime.datetime(4,4,4))
+    test1 = parse(date, dayfirst=True, default=datetime.datetime(7,7,7))
     test2 = parse(date, dayfirst=True, default=datetime.datetime(8,8,8))
 
     dob = []
@@ -134,7 +135,7 @@ def extract_artist_info(html, site):
                         text = text[span.end():].replace('0000', '').replace('.', '/')
                         text = re.sub('/\s+', '/', text).strip('/')
                         if text != '':
-                            test1 = parse(text, dayfirst=True, default=datetime.datetime(4,4,4))
+                            test1 = parse(text, dayfirst=True, default=datetime.datetime(7,7,7))
                             test2 = parse(text, dayfirst=True, default=datetime.datetime(8,8,8))
                             if test1.year > 2500:
                                 test1 = test1.replace(year=test1.year-1000)
@@ -185,7 +186,7 @@ def extract_artist_info(html, site):
                     text = text[span.end():].replace('0000', '').replace('.', '/')
                     text = re.sub('/\s+', '/', text).strip('/')
                     if text != '':
-                        test1 = parse(text, dayfirst=True, default=datetime.datetime(4,4,4))
+                        test1 = parse(text, dayfirst=True, default=datetime.datetime(7,7,7))
                         test2 = parse(text, dayfirst=True, default=datetime.datetime(8,8,8))
                         if test1.year > 2500:
                             test1 = test1.replace(year=test1.year-1000)
