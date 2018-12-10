@@ -180,6 +180,10 @@ def merge_zing_nct():
 
     name_diff = [k for k, v in final.items() if type(v['birth_name']) is not str]
 
+def save_final(final):
+    with open('artists.final.kb', 'wb') as f:
+        pickle.dump(final, f)
+
 def city_to_wiki():
     with open('artists.final.kb', 'rb') as f:
         final = pickle.load(f)
@@ -216,3 +220,28 @@ def merge_chieucao():
                     city_err.append(k)
             else:
                 final[k]['city'] = v['city']
+
+def merge_wiki():
+    with open('artists.final.kb', 'rb') as f:
+        final = pickle.load(f)
+
+    with open('artist.wiki', 'rb') as f:
+        wiki = pickle.load(f)
+
+    err = []
+    missing = []
+
+    for k, v in wiki.items():
+        if k not in final:
+            missing.append(k)
+        else:
+            if 'wiki' not in final[k]:
+                final[k]['wiki'] = v['wiki']
+            elif final[k]['wiki'] != v['wiki']:
+                err.append((k, final[k]['wiki'], v['wiki']))
+
+    for v in final.values():
+        if 'wiki' not in v:
+            v['wiki'] = None
+
+# save_final(final)

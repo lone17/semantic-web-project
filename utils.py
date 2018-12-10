@@ -87,10 +87,10 @@ def extract_artist_name(html, site):
 def standardize_date(date):
 
     if not date:
-        return 'yyyy/mm/dd'
+        return 'yyyy-mm-dd'
 
-    test1 = parse(date, dayfirst=True, default=datetime.datetime(7,7,7))
-    test2 = parse(date, dayfirst=True, default=datetime.datetime(8,8,8))
+    test1 = parse(date, default=datetime.datetime(7,7,7))
+    test2 = parse(date, default=datetime.datetime(8,8,8))
 
     dob = []
     tmp = test1.strftime('%d%m%Y')
@@ -108,7 +108,7 @@ def standardize_date(date):
     else:
         dob.append('dd')
 
-    return '/'.join(dob)
+    return '-'.join(dob)
 
 def extract_artist_info(html, site):
     soup = BeautifulSoup(html, features='lxml')
@@ -613,3 +613,38 @@ def test_song(url):
 #             'wiki': 'https://vi.wikipedia.org/wiki/Ng%E1%BB%8Dt_(ban_nh%E1%BA%A1c)'
 #         }
 # }
+
+def new_artist(birth_name, is_band=False, wiki=None):
+    return {
+    'birth_name': birth_name,
+    'dob': None,
+    'city': None,
+    'country': 'Việt Nam',
+    'height': None,
+    'instruments': set(),
+    'genres': set(),
+    'is_band': is_band,
+    'member_of': [],
+    'img': None,
+    'nct_url': None,
+    'zing_url': None,
+    'wiki': wiki,
+    }
+
+def extract_member_of():
+    with open('band_member.csv','r',encoding='utf-8-sig') as f:
+        rows = f.read().strip().split('\n')
+
+    with open('artists.final.kb', 'rb') as f:
+        final = pickle.load(f)
+
+    err = []
+    band_members = []
+
+    for row in rows:
+        band, member, birth_name, start, end, existed = row.split(',')
+        band_members.append((band, member, birth_name, start, end, existed == '1'))
+
+        if member not in final:
+            final[member] = new_artist(birth_name)
+        final[member]['member_of'].append({'band': band, 'from': start, 'to': end})
