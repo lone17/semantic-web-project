@@ -180,9 +180,6 @@ def merge_zing_nct():
 
     name_diff = [k for k, v in final.items() if type(v['birth_name']) is not str]
 
-def save_final(final):
-    with open('artists.final.kb', 'wb') as f:
-        pickle.dump(final, f)
 
 def city_to_wiki():
     with open('artists.final.kb', 'rb') as f:
@@ -244,4 +241,25 @@ def merge_wiki():
         if 'wiki' not in v:
             v['wiki'] = None
 
-# save_final(final)
+def merge_songs():
+    with open('artists.final.kb', 'rb') as f:
+        artists = pickle.load(f)
+    with open('url.name', 'rb') as f:
+        url_name = pickle.load(f)
+    with open('songs.vn.kb', 'rb') as f:
+        songs = pickle.load(f)
+    err = []
+
+    final = {}
+    for k, v in songs.items():
+        name = v.pop('name')
+        if name not in final:
+            final[name] = {'urls': [], 'performed_by': set(), 'composed_by': set(), 'lyric': ''}
+        final[name]['urls'].append(k)
+        final[name]['performed_by'].update(v['performed_by'])
+        final[name]['composed_by'].update(v['composed_by'])
+        if len(v['lyric']) > len(final[name]['lyric']):
+            final[name]['lyric'] = v['lyric']
+
+    with open('songs.final.kb', 'wb') as f:
+        pickle.dump(final, f)

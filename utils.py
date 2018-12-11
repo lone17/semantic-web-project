@@ -318,7 +318,7 @@ def extract_performers(html, site):
         css_selector = 'body > div.wrapper-page > div.wrap-body.group.page-play-song.container.playing-song > div.info-top-play.group.mb7 > div.info-content.otr.mb7 > div.pull-left > h1 > div > h2 > a'
         if zing_video_indicator in html:
             css_selector = css_selector.replace('playing-song', 'playing-video')
-        ret = ['https://mp3.zing.vn' + a.get('href') + '/tieu_su'
+        ret = ['https://mp3.zing.vn' + a.get('href') + '/tieu-su'
                for a in soup.select(css_selector)]
     elif site == 'nct':
         css_selector = '#box_playing_id > div.info_name_songmv > div.name_title > h2 > a'
@@ -648,3 +648,7 @@ def extract_member_of():
         if member not in final:
             final[member] = new_artist(birth_name)
         final[member]['member_of'].append({'band': band, 'from': start, 'to': end})
+
+def standardize_name(name):
+    tmp = re.split(' == | => | >> | <| \(', name)
+    return tmp[0]
